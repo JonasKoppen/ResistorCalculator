@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ResistorCalculator.iml" filepath="$PROJECT_DIR$/ResistorCalculator.iml" />
+      <module fileurl="file://C:\Users\Viktor\.gradle\AppOfTheYear\ResistorCalculator\ResistorCalculator.iml" filepath="C:\Users\Viktor\.gradle\AppOfTheYear\ResistorCalculator\ResistorCalculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Viktor\.gradle\AppOfTheYear\ResistorCalculator\app\app.iml" filepath="C:\Users\Viktor\.gradle\AppOfTheYear\ResistorCalculator\app\app.iml" />
     </modules>
   </component>
 </project>
