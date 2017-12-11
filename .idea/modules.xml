@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ResistorCalculator.iml" filepath="$PROJECT_DIR$/ResistorCalculator.iml" />
-      <module fileurl="file://C:\Users\Joren\Documents\school\tweede_jaar_EA\eerste_semester\mobile_development\ResistorCalculator\ResistorCalculator.iml" filepath="C:\Users\Joren\Documents\school\tweede_jaar_EA\eerste_semester\mobile_development\ResistorCalculator\ResistorCalculator.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://C:\Users\Joren\Documents\school\tweede_jaar_EA\eerste_semester\mobile_development\ResistorCalculator\app\app.iml" filepath="C:\Users\Joren\Documents\school\tweede_jaar_EA\eerste_semester\mobile_development\ResistorCalculator\app\app.iml" />
     </modules>
   </component>
 </project>

@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ListView listView = (ListView)findViewById(R.id.listView);
-
+        CustomAdapter customAdapter = new CustomAdapter();
+        listView.setAdapter(customAdapter);
 
 
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
             textView_textList.setText("hey");
 
-            //imageView_photoList.setImageResource(appointmentList.get(i).getPicture());
+            //imageView_photoList.setImageResource();
 
             return view;
         }
