@@ -16,7 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResistorCalc"></activity>
+        <activity android:name=".ResistorCalc" />
+        <activity android:name=".resistor_serie"></activity>
     </application>
 
 </manifest>
