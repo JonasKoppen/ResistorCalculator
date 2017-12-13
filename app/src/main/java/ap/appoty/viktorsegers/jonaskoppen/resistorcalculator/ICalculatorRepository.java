@@ -7,5 +7,5 @@ import java.util.List;
  */
 
 public interface ICalculatorRepository {
-    List<Calculater> getCalculator();
+    List<Calculator> getCalculator();
 }
