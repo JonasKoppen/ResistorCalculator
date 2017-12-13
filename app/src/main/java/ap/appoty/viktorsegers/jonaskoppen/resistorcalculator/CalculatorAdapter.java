@@ -10,13 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 /**
  * Created by Viktor on 13-12-2017.
  */
 
 public class CalculatorAdapter extends ArrayAdapter<Calculator> {
-    public CalculatorAdapter(@NonNull Context context, int resource) {
-        super(context, resource);
+    public CalculatorAdapter(Context context, List<Calculator> appointments)  {
+        super(context, -1, appointments);
     }
 
     public View getView(int position, View convertView, ViewGroup parent){
