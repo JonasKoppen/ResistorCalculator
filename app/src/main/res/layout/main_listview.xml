@@ -5,16 +5,19 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/icon"
-
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="left"
+       />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/name"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/text"
+        android:textAlignment="center"
+        android:textSize="16dp"
+        android:padding="12dp"
         />
 
 

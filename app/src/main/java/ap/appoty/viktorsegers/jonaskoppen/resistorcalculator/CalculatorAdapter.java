@@ -28,7 +28,7 @@ public class CalculatorAdapter extends ArrayAdapter<Calculator> {
 
 
         ImageView imageView = (ImageView)view.findViewById(R.id.icon);
-        TextView textView = (TextView)view.findViewById(R.id.text);
+        TextView textView = (TextView)view.findViewById(R.id.name);
 
 
         imageView.setImageResource(getItem(position).getImage());
