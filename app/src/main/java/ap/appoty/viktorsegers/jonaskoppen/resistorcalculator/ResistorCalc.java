@@ -3,6 +3,7 @@ package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -12,11 +13,25 @@ public class ResistorCalc extends AppCompatActivity {
 
     TextView txtOut;
     ArrayList<ResistorCalcBtnValue> buttonValue;
+    ListView primGetal;
+    ListView secGetal;
+    ListView factorGetal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resistor_calc);
         createButtonValue();
+
+        primGetal = findViewById(R.id.firstNum);
+        primGetal.setAdapter(new ResistorCalcAdaptor(this, buttonValue));
+
+        secGetal = findViewById(R.id.secNum);
+        secGetal.setAdapter(new ResistorCalcAdaptor(this, buttonValue));
+
+        factorGetal = findViewById(R.id.factor);
+        factorGetal.setAdapter(new ResistorCalcAdaptor(this, buttonValue));
+
+
     }
 
 

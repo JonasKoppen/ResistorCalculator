@@ -36,19 +36,22 @@
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/firstNum">
+            android:id="@+id/firstNum"
+            android:layout_weight="1">
 
         </ListView>
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/secNum">
+            android:id="@+id/secNum"
+            android:layout_weight="1">
 
         </ListView>
         <ListView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/factor">
+            android:id="@+id/factor"
+            android:layout_weight="1">
 
         </ListView>
         <ListView
