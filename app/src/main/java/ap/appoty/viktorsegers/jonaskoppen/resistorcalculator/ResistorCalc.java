@@ -3,14 +3,11 @@ package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class ResistorCalc extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
-        int text = 0;
+        setContentView(R.layout.activity_resistor_calc);
     }
 }
