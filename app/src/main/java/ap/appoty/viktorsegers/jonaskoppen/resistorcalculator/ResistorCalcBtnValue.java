@@ -14,4 +14,16 @@ public class ResistorCalcBtnValue {
         this.colorCode = colorCode;
         this.value = value;
     }
+
+    public int getColorCode() {
+        return colorCode;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public int getId() {
+        return id;
+    }
 }
