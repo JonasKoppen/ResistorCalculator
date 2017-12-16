@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,12 +29,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch ((int)id){
-                    case 0:
-                        startResitorCalc();
-                        break;
-
-                }
+                startNewClass(position);
             }
         });
 
@@ -40,8 +37,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void startResitorCalc(){
-        Intent detail = new Intent(MainActivity.this, ResistorCalc.class);
+    public void startNewClass(int position){
+        List<Calculator> tmp = CalculatorDummyRepository.getInstance().getCalculator();
+        Intent detail = new Intent(MainActivity.this, tmp.get(position).getKlasse());
         startActivity(detail);
     }
 }
