@@ -1,5 +1,6 @@
 package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,11 +27,21 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch ((int)id){
+                    case 0:
+                        startResitorCalc();
+                        break;
 
+                }
             }
         });
 
 
 
+    }
+
+    public void startResitorCalc(){
+        Intent detail = new Intent(MainActivity.this, ResistorCalc.class);
+        startActivity(detail);
     }
 }
