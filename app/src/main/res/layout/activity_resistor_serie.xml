@@ -22,8 +22,8 @@
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="125dp"
-        android:text="TextView"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textSize="32sp"/>
 
     <Button
         android:id="@+id/btnCalculate"
@@ -43,7 +43,7 @@
         android:layout_alignBottom="@+id/editTextR2"
         android:layout_toStartOf="@+id/btnCalculate"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/editTextR2"
@@ -53,6 +53,6 @@
         android:layout_marginTop="56dp"
         android:layout_toEndOf="@+id/btnCalculate"
         android:ems="10"
-        android:inputType="number" />
+        android:inputType="numberDecimal" />
 
 </RelativeLayout>
