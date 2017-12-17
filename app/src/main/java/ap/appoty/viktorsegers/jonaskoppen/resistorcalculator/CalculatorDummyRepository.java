@@ -26,7 +26,7 @@ public class CalculatorDummyRepository implements ICalculatorRepository {
 
         calculators.add(new Calculator("KleurCode", R.mipmap.ic_kleurcode, ResistorCalc.class));
         calculators.add(new Calculator("SerieSchakeling", R.mipmap.ic_serie, resistor_serie.class));
-        calculators.add(new Calculator("ParallelSchakeling", R.mipmap.ic_para, MainActivity.class)); //Dummy verander dit wannneer klasse beschikbaar is!!
+        calculators.add(new Calculator("ParallelSchakeling", R.mipmap.ic_para, resistor_parallel.class)); //Dummy verander dit wannneer klasse beschikbaar is!!
 
         return calculators;
     }

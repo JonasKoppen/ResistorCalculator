@@ -7,9 +7,11 @@
     android:id="@+id/CalculatorList_Item">
 
     <Button
+        android:id="@+id/btnCalcItem"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnCalcItem"
-       />
+        android:background="@color/Blue"
+        android:text="@android:string/ok" />
 
 </LinearLayout>
