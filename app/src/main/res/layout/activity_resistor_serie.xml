@@ -32,7 +32,8 @@
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="59dp"
-        android:text="Calculate" />
+        android:text="Calculate"
+        android:onClick="bereken"/>
 
     <EditText
         android:id="@+id/editTextR1"

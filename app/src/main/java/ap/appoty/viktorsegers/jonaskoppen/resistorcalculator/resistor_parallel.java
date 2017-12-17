@@ -7,9 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class resistor_serie extends AppCompatActivity {
+public class resistor_parallel extends AppCompatActivity {
 
     TextView totalText;
     EditText R1Text;
@@ -18,7 +16,7 @@ public class resistor_serie extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resistor_serie);
+        setContentView(R.layout.activity_resistor_parallel);
         Button calc = (Button)findViewById(R.id.btnCalculate);
         totalText = (TextView)findViewById(R.id.textView);
         R1Text = (EditText)findViewById(R.id.editTextR1);
