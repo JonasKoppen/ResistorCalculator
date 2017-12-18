@@ -1,5 +1,7 @@
 package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
+import android.graphics.Color;
+
 /**
  * Created by jonas on 13/12/2017.
  */

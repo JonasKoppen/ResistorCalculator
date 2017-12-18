@@ -22,11 +22,23 @@ public class ResistorCalc extends AppCompatActivity {
     ListView listFactor;
     ListView listTolerance;
 
+    int firstNum;
+    int secNum;
+    int factor;
+    int tolaerance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resistor_calc);
         createButtonValue();
+        firstNum = 1;
+        secNum = 0;
+        factor = 0;
+        tolaerance = 0;
+
+        txtOut = (TextView) findViewById(R.id.resistorCalcValue);
+        updateText();
 
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, buttonValue));
@@ -34,6 +46,8 @@ public class ResistorCalc extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("First", String.valueOf(buttonValue.get(i).getValue()));
+                firstNum = buttonValue.get(i).getValue();
+                updateText();
             }
         });
 
@@ -43,6 +57,8 @@ public class ResistorCalc extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("Second", String.valueOf(buttonValue.get(i).getValue()));
+                secNum = buttonValue.get(i).getValue();
+                updateText();
             }
         });
 
@@ -52,6 +68,8 @@ public class ResistorCalc extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("Factor", String.valueOf(buttonValue.get(i).getValue()));
+                factor = buttonValue.get(i).getValue();
+                updateText();
             }
         });
 
@@ -61,11 +79,16 @@ public class ResistorCalc extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("Tolerantie", String.valueOf(buttonValue.get(i).getValue()));
+                tolaerance = buttonValue.get(i).getValue();
+                updateText();
             }
         });
     }
 
-
+    public void updateText(){
+        double value = ((firstNum * 10) + secNum ) * (Math.pow(10, ((factor) % 3)));
+        txtOut.setText(String.valueOf(value));
+    }
 
 
     protected void createButtonValue(){
