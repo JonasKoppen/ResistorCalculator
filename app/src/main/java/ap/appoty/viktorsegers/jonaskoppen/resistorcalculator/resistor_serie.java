@@ -40,8 +40,6 @@ public class resistor_serie extends AppCompatActivity {
         R1Spinner.setAdapter(arrayAdapter);
         R2Spinner.setAdapter(arrayAdapter);
 
-
-
         /*
         calc.setOnClickListener(new View.OnClickListener() {
             @Override
