@@ -16,8 +16,10 @@ import org.w3c.dom.Text;
 public class resistor_serie extends AppCompatActivity {
 
     TextView totalText;
+
     EditText R1Text;
     EditText R2Text;
+
     Spinner R1Spinner;
     Spinner R2Spinner;
 
@@ -87,14 +89,19 @@ public class resistor_serie extends AppCompatActivity {
                 break;
         }
 
-        String R1string = R1Text.getText().toString();
-        String R2string = R2Text.getText().toString();
-        double R1 = Double.parseDouble(R1string) * R1multiplier;
-        double R2 = Double.parseDouble(R2string) * R2multiplier;
-        double Rtotal = prefixCalculator((R1 + R2));
-        String RtotalString = String.valueOf(Rtotal);
+        try{
+            String R1string = R1Text.getText().toString();
+            String R2string = R2Text.getText().toString();
+            double R1 = Double.parseDouble(R1string) * R1multiplier;
+            double R2 = Double.parseDouble(R2string) * R2multiplier;
+            double Rtotal = prefixCalculator((R1 + R2));
+            String RtotalString = String.valueOf(Rtotal);
+            totalText.setText(RtotalString + prefix);
+        }
+        catch (NumberFormatException e){
+            Toast.makeText(this, "give a valid value", Toast.LENGTH_LONG).show();
+        }
 
-        totalText.setText(RtotalString + prefix);
     }
 
     private Double prefixCalculator(Double getal){
