@@ -29,7 +29,7 @@ public class resistor_parallel extends AppCompatActivity {
         String R2string = R2Text.getText().toString();
         double R1 = Double.parseDouble(R1string);
         double R2 = Double.parseDouble(R2string);
-        double Rtotal = prefixCalculator((R1*R2)/(R1+R2));
+        double Rtotal = prefixCalculator(((R1*R2)/(R1+R2)));
         String RtotalString = String.valueOf(Rtotal);
         totalText.setText(RtotalString + "\tΩ");
     }
