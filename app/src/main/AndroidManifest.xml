@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ResistorCalc" />
-        <activity android:name=".resistor_serie"></activity>
+        <activity android:name=".resistor_serie" />
+        <activity android:name=".resistor_parallel"></activity>
     </application>
 
 </manifest>

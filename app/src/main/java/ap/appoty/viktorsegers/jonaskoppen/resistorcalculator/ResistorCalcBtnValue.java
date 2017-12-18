@@ -1,5 +1,7 @@
 package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
+import android.graphics.Color;
+
 /**
  * Created by jonas on 13/12/2017.
  */
@@ -13,13 +15,17 @@ public class ResistorCalcBtnValue {
         this.id  = id;
         this.colorCode = colorCode;
         this.value = value;
-
-
     }
 
-    public int getValue(){ return value;}
+    public int getColorCode() {
+        return colorCode;
+    }
 
-    public int getColorCode() {return colorCode;}
+    public int getValue() {
+        return value;
+    }
 
-    public int getId(){return id;}
+    public int getId() {
+        return id;
+    }
 }
