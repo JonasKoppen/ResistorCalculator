@@ -32,7 +32,10 @@
             android:screenOrientation="portrait"
 
             ></activity>
-        <activity android:name=".OhmLaw" />
+        <activity
+            android:name=".OhmLaw"
+            android:screenOrientation="portrait"
+            />
     </application>
 
 </manifest>
