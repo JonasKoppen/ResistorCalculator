@@ -6,5 +6,22 @@
         <item>MΩ</item>
         <item>GΩ</item>
     </string-array>
-    <color name="Moccasin">#FFE4B5</color>
+    <string-array name="prefixCurrent">
+        <item>nA</item>
+        <item>µA</item>
+        <item>mA</item>
+        <item>A</item>
+        <item>KA</item>
+        <item>MA</item>
+        <item>GA</item>
+    </string-array>
+    <string-array name="prefixVoltage">
+        <item>nV</item>
+        <item>µV</item>
+        <item>mV</item>
+        <item>V</item>
+        <item>Kv</item>
+        <item>MV</item>
+        <item>GV</item>
+    </string-array>
 </resources>

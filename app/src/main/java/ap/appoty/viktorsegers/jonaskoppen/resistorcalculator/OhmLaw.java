@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
@@ -29,24 +30,24 @@ public class OhmLaw extends AppCompatActivity {
         EditText Waarde1 = (EditText)findViewById(R.id.editTextWaarde1) ;
         EditText Waarde2 = (EditText)findViewById(R.id.editTextWaarde2) ;
 
+        Spinner spinnerWaarde1 = (Spinner)findViewById(R.id.SpinnerWaarde1);
+        Spinner spinnerWaarde2 = (Spinner)findViewById(R.id.SpinnerWaarde2);
+
 
         if (CurrentCalc.isChecked()){
-            Waarde1.setText("Waarde R");
-            Waarde2.setText("Waarde V");
+
+
 
 
         }
 
 
         else if (VoltageCalc.isChecked()){
-            Waarde1.setText("Waarde R");
-            Waarde2.setText("Waarde I");
+
         }
 
 
         else if (OhmCalc.isChecked()){
-            Waarde1.setText("Waarde I");
-            Waarde2.setText("Waarde V");
 
         }
 
