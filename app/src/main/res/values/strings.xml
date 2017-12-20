@@ -6,4 +6,5 @@
         <item>MΩ</item>
         <item>GΩ</item>
     </string-array>
+    <color name="Moccasin">#FFE4B5</color>
 </resources>
