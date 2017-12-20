@@ -35,7 +35,7 @@
         android:layout_marginTop="59dp"
         android:text="Calculate"
         android:onClick="bereken"
-        android:background="#96ba93"/>
+        android:background="#edd0bd"/>
 
     <EditText
         android:id="@+id/editTextR1"

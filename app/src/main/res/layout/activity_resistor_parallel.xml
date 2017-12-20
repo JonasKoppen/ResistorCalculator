@@ -52,7 +52,7 @@
         android:layout_marginTop="59dp"
         android:text="Calculate"
         android:onClick="bereken"
-        android:background="#96ba93"/>
+        android:background="#edd0bd"/>
 
     <Spinner
         android:id="@+id/planets_spinnerR1"
