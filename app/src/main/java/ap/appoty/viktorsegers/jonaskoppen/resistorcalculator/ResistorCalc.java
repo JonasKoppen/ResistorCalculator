@@ -1,18 +1,27 @@
 package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
+import android.app.Activity;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.SurfaceView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class ResistorCalc extends AppCompatActivity {
+public class ResistorCalc extends Activity {
 
     TextView txtOut;
     ArrayList<ResistorCalcBtnValue> buttonValue;
@@ -27,6 +36,7 @@ public class ResistorCalc extends AppCompatActivity {
     int factor;
     int tolaerance;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +49,7 @@ public class ResistorCalc extends AppCompatActivity {
 
         txtOut = (TextView) findViewById(R.id.resistorCalcValue);
         updateText();
+        draw();
 
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, buttonValue));
@@ -83,6 +94,12 @@ public class ResistorCalc extends AppCompatActivity {
                 updateText();
             }
         });
+    }
+
+    public void draw(){
+        Resources res = getResources();
+        ResistorCalcView view = (ResistorCalcView) this.findViewById(R.id.resistorCalcView);
+
     }
 
     public void updateText(){

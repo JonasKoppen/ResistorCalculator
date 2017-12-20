@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ResistorCalculator</string>
+    <string-array name="prefixOhm">
+        <item>Ω</item>
+        <item>KΩ</item>
+        <item>MΩ</item>
+        <item>GΩ</item>
+    </string-array>
 </resources>
