@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/ResistorCalc"
-    tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.ResistorCalc">
+    tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.ResistorCalc"
+    android:background="#fcf3d1">
 
 
     <ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.ResistorCalcView

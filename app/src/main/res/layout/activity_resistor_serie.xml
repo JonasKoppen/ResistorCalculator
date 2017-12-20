@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.resistor_serie">
+    tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.resistor_serie"
+    android:background="#fcf3d1">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -23,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="125dp"
         android:gravity="center"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <Button
         android:id="@+id/btnCalculate"
@@ -33,7 +34,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="59dp"
         android:text="Calculate"
-        android:onClick="bereken"/>
+        android:onClick="bereken"
+        android:background="#96ba93"/>
 
     <EditText
         android:id="@+id/editTextR1"

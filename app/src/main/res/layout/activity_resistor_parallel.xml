@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.resistor_parallel">
+    tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.resistor_parallel"
+    android:background="#fcf3d1">
 
     <ImageView
         android:id="@+id/imageView3"
@@ -50,7 +51,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="59dp"
         android:text="Calculate"
-        android:onClick="bereken"/>
+        android:onClick="bereken"
+        android:background="#96ba93"/>
 
     <Spinner
         android:id="@+id/planets_spinnerR1"

@@ -36,6 +36,7 @@
             android:name=".OhmLaw"
             android:screenOrientation="portrait"
             />
+
     </application>
 
 </manifest>
