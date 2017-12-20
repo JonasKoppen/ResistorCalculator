@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,8 @@ public class ResistorCalc extends Activity {
     private float x;
     private float y;
 
+    ResistorCalcView resistorCalcView;
+
 
 
     @Override
@@ -43,6 +46,9 @@ public class ResistorCalc extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resistor_calc);
         createButtonValue();
+
+        resistorCalcView = findViewById(R.id.resistorCalcView);
+
         firstNum = 1;
         secNum = 0;
         factor = 0;
@@ -61,7 +67,6 @@ public class ResistorCalc extends Activity {
                 Log.i("First", String.valueOf(buttonValue.get(i).getValue()));
                 firstNum = buttonValue.get(i).getValue();
                 updateText();
-                draw();
             }
         });
 
@@ -104,13 +109,11 @@ public class ResistorCalc extends Activity {
     public void updateText(){
         double value = ((firstNum * 10) + secNum ) * (Math.pow(10, ((factor) % 3)));
         txtOut.setText(String.valueOf(value));
-    }
-
-    public void draw(){
-        x = 10;
-        y = 10;
-        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.resistorcalc);
-        bitmap = (findViewById(R.id.ResistorCalc)).getDrawingCache();
+        resistorCalcView.setColors(
+                ContextCompat.getColor(this, buttonValue.get(firstNum).getColorCode()),
+                ContextCompat.getColor(this,buttonValue.get(secNum).getColorCode()),
+                ContextCompat.getColor(this,buttonValue.get(factor).getColorCode()),
+                ContextCompat.getColor(this,buttonValue.get(0).getColorCode()));
     }
 
 
