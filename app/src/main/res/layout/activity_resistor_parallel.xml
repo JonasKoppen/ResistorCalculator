@@ -18,12 +18,10 @@
         android:id="@+id/editTextR1"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btnCalculate"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="32dp"
+        android:layout_alignStart="@+id/btnCalculate"
         android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"/>
 
     <EditText
         android:id="@+id/editTextR2"
