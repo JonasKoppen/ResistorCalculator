@@ -7,7 +7,6 @@
     tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.MainActivity"
     android:background="#fcf3d1">
 
-
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
