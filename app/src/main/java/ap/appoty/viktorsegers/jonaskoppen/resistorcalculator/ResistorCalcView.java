@@ -64,13 +64,12 @@ public class ResistorCalcView extends View {
         if(!isInit){
             init();
         }
-        canvas.drawColor(Color.WHITE);
+
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(10);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
-        canvas.drawCircle(0, 5, 2,paint);
-        canvas.drawLine(0,0,width,height,paint);
+
         Bitmap picture = BitmapFactory.decodeResource(getResources(), R.drawable.resistorcalc);
         canvas.drawBitmap(picture,new Rect(0,0,picture.getWidth(), picture.getHeight()), new Rect(0,0,width,height), paint);
 
