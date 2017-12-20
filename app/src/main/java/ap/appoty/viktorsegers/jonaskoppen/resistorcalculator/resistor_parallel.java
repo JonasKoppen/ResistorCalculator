@@ -10,6 +10,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.math.RoundingMode;
+
 public class resistor_parallel extends AppCompatActivity {
 
     TextView totalText;
@@ -19,8 +23,7 @@ public class resistor_parallel extends AppCompatActivity {
     Spinner R1Spinner;
     Spinner R2Spinner;
 
-    String prefix;
-
+    PrefixCalculator calculator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,9 @@ public class resistor_parallel extends AppCompatActivity {
         R1Spinner.setAdapter(arrayAdapter);
         R2Spinner.setAdapter(arrayAdapter);
 
+        calculator = new PrefixCalculator();
     }
+
     public void bereken(View v){
         double R1multiplier = 1;
         switch (R1Spinner.getSelectedItemPosition()){
@@ -77,44 +82,14 @@ public class resistor_parallel extends AppCompatActivity {
         try{
             double R1 = Double.parseDouble(R1string) * R1multiplier;
             double R2 = Double.parseDouble(R2string) * R2multiplier;
-            double Rtotal = prefixCalculator(((R1*R2)/(R1+R2)));
-            String RtotalString = String.valueOf(Rtotal);
-            totalText.setText(RtotalString + prefix);
+
+            double Rtotal = calculator.getWaarde(((R1*R2)/(R1+R2)));
+            String prefix = calculator.getPrefix(((R1*R2)/(R1+R2)));
+            totalText.setText(Rtotal + prefix + "Ω");
         }
         catch (NumberFormatException e){
             Toast.makeText(this, "give a valid value", Toast.LENGTH_LONG).show();
         }
 
-    }
-
-    private Double prefixCalculator(Double getal){
-        if(getal % Math.pow(10, 8) == 0){
-            prefix = "GΩ";
-            return (getal/Math.pow(10,9));
-        }
-        else if(getal % Math.pow(10, 5) == 0){
-            prefix = "MΩ";
-            return (getal/Math.pow(10,6));
-        }
-        else if(getal % Math.pow(10, 2) == 0){
-            prefix = "KΩ";
-            return (getal/Math.pow(10,3));
-        }
-        else if(getal % 1 == 0){
-            prefix = "Ω";
-            return getal;
-        }
-        else if(getal % Math.pow(10, -4) == 0){
-            prefix = "mΩ";
-            return (getal/Math.pow(10,-3));
-        }
-        else if(getal % Math.pow(10, -7) == 0){
-            prefix = "µΩ";
-            return (getal/Math.pow(10,-6));
-        }
-        else{
-            prefix = "nΩ";
-            return (getal/Math.pow(10,-9));
-        }
     }
 }
