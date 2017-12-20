@@ -49,8 +49,6 @@ public class ResistorCalc extends Activity {
 
         txtOut = (TextView) findViewById(R.id.resistorCalcValue);
         updateText();
-        draw();
-
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, buttonValue));
         listFirstNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -96,11 +94,7 @@ public class ResistorCalc extends Activity {
         });
     }
 
-    public void draw(){
-        Resources res = getResources();
-        ResistorCalcView view = (ResistorCalcView) this.findViewById(R.id.resistorCalcView);
 
-    }
 
     public void updateText(){
         double value = ((firstNum * 10) + secNum ) * (Math.pow(10, ((factor) % 3)));

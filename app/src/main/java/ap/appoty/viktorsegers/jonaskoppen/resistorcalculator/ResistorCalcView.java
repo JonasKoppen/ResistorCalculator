@@ -10,16 +10,16 @@ import android.view.View;
  * Created by jonas on 19/12/2017.
  */
 
-public class ResistorCalcView extends SurfaceView {
+public class ResistorCalcView{// extends SurfaceView {
     public ResistorCalcView(Context context) {
-        super(context);
+        //super(context);
     }
 
-    @Override
+    //@Override
     protected void onDraw(Canvas canvas) {
-        super.onDraw(canvas);
-        Paint paint = new Paint();
-        canvas.drawCircle(10,10,5, paint);
+        //super.onDraw(canvas);
+        //Paint paint = new Paint();
+        //canvas.drawCircle(10,10,5, paint);
     }
 
 
