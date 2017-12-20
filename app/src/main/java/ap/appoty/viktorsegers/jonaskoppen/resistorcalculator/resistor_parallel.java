@@ -17,6 +17,7 @@ import java.math.RoundingMode;
 public class resistor_parallel extends AppCompatActivity {
 
     TextView totalText;
+
     EditText R1Text;
     EditText R2Text;
 
@@ -24,6 +25,7 @@ public class resistor_parallel extends AppCompatActivity {
     Spinner R2Spinner;
 
     PrefixCalculator calculator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
