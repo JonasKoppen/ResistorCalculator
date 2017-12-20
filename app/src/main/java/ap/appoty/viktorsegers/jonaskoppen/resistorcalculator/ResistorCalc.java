@@ -28,18 +28,12 @@ public class ResistorCalc extends Activity {
     ListView listFactor;
     ListView listTolerance;
 
-    int firstNum;
-    int secNum;
-    int factor;
-    int tolaerance;
-
-    private Bitmap bitmap;
-    private float x;
-    private float y;
+    int firstNumId;
+    int secNumId;
+    int factorId;
+    int tolaeranceId;
 
     ResistorCalcView resistorCalcView;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +43,10 @@ public class ResistorCalc extends Activity {
 
         resistorCalcView = findViewById(R.id.resistorCalcView);
 
-        firstNum = 1;
-        secNum = 0;
-        factor = 0;
-        tolaerance = 0;
+        firstNumId = 1;
+        secNumId = 0;
+        factorId = 0;
+        tolaeranceId = 0;
 
         txtOut = (TextView) findViewById(R.id.resistorCalcValue);
         updateText();
@@ -65,7 +59,7 @@ public class ResistorCalc extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("First", String.valueOf(buttonValue.get(i).getValue()));
-                firstNum = buttonValue.get(i).getValue();
+                firstNumId = buttonValue.get(i).getId();
                 updateText();
             }
         });
@@ -76,7 +70,7 @@ public class ResistorCalc extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("Second", String.valueOf(buttonValue.get(i).getValue()));
-                secNum = buttonValue.get(i).getValue();
+                secNumId = buttonValue.get(i).getId();
                 updateText();
             }
         });
@@ -87,7 +81,7 @@ public class ResistorCalc extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("Factor", String.valueOf(buttonValue.get(i).getValue()));
-                factor = buttonValue.get(i).getValue();
+                factorId = buttonValue.get(i).getId();
                 updateText();
             }
         });
@@ -98,7 +92,7 @@ public class ResistorCalc extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("Tolerantie", String.valueOf(buttonValue.get(i).getValue()));
-                tolaerance = buttonValue.get(i).getValue();
+                tolaeranceId = buttonValue.get(i).getId();
                 updateText();
             }
         });
@@ -107,13 +101,13 @@ public class ResistorCalc extends Activity {
 
 
     public void updateText(){
-        double value = ((firstNum * 10) + secNum ) * (Math.pow(10, ((factor) % 3)));
+        double value = ((buttonValue.get(firstNumId).getValue() * 10) + buttonValue.get(secNumId).getValue() ) * (Math.pow(10, ((buttonValue.get(factorId).getValue()) % 3)));
         txtOut.setText(String.valueOf(value));
         resistorCalcView.setColors(
-                ContextCompat.getColor(this, buttonValue.get(firstNum).getColorCode()),
-                ContextCompat.getColor(this,buttonValue.get(secNum).getColorCode()),
-                ContextCompat.getColor(this,buttonValue.get(factor).getColorCode()),
-                ContextCompat.getColor(this,buttonValue.get(0).getColorCode()));
+                ContextCompat.getColor(this, buttonValue.get(firstNumId).getColorCode()),
+                ContextCompat.getColor(this,buttonValue.get(secNumId).getColorCode()),
+                ContextCompat.getColor(this,buttonValue.get(factorId).getColorCode()),
+                ContextCompat.getColor(this,buttonValue.get(tolaeranceId).getColorCode()));
     }
 
 
