@@ -1,24 +1,20 @@
 package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
 import android.app.Activity;
-import android.content.res.Resources;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.SurfaceView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ResistorCalc extends Activity {
@@ -36,6 +32,11 @@ public class ResistorCalc extends Activity {
     int factor;
     int tolaerance;
 
+    private Bitmap bitmap;
+    private float x;
+    private float y;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +50,9 @@ public class ResistorCalc extends Activity {
 
         txtOut = (TextView) findViewById(R.id.resistorCalcValue);
         updateText();
+
+
+
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, buttonValue));
         listFirstNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,6 +61,7 @@ public class ResistorCalc extends Activity {
                 Log.i("First", String.valueOf(buttonValue.get(i).getValue()));
                 firstNum = buttonValue.get(i).getValue();
                 updateText();
+                draw();
             }
         });
 
@@ -101,6 +106,13 @@ public class ResistorCalc extends Activity {
         txtOut.setText(String.valueOf(value));
     }
 
+    public void draw(){
+        x = 10;
+        y = 10;
+        bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.resistorcalc);
+        bitmap = (findViewById(R.id.ResistorCalc)).getDrawingCache();
+    }
+
 
     protected void createButtonValue(){
         buttonValue = new ArrayList<>();
@@ -115,6 +127,8 @@ public class ResistorCalc extends Activity {
         buttonValue.add(new ResistorCalcBtnValue(8,8, R.color.Grey));
         buttonValue.add(new ResistorCalcBtnValue(9,9, R.color.White));
     }
+
+
 }
 
 
