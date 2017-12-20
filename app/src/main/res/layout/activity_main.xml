@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.MainActivity"
-    android:background="@color/Moccasin">
+    android:background="#cefaea">
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:divider="#adf6dc"
+        android:dividerHeight="1dp"
         />
 
 
