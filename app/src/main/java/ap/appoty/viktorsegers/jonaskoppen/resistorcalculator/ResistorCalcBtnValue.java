@@ -7,11 +7,11 @@ import android.graphics.Color;
  */
 
 public class ResistorCalcBtnValue {
-    private int value;
+    private float value;
     private int colorCode;
     private int id;
 
-    public ResistorCalcBtnValue(int id, int value, int colorCode){
+    public ResistorCalcBtnValue(int id, float value, int colorCode){
         this.id  = id;
         this.colorCode = colorCode;
         this.value = value;
@@ -21,7 +21,7 @@ public class ResistorCalcBtnValue {
         return colorCode;
     }
 
-    public int getValue() {
+    public float getValue() {
         return value;
     }
 

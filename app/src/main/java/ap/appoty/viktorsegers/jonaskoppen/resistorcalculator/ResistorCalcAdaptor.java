@@ -27,7 +27,7 @@ public class ResistorCalcAdaptor extends ArrayAdapter<ResistorCalcBtnValue> {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View itemView = inflater.inflate(R.layout.resistor_calc_list, null, false);
         ((TextView)itemView.findViewById(R.id.btnCalcItem)).setBackgroundColor(ContextCompat.getColor(getContext(), getItem(position).getColorCode()));
-        ((TextView)itemView.findViewById(R.id.btnCalcItem)).setText( String.valueOf(getItem(position).getValue()));
+        ((TextView)itemView.findViewById(R.id.btnCalcItem)).setText( "\n");
         return itemView;
     }
 }
