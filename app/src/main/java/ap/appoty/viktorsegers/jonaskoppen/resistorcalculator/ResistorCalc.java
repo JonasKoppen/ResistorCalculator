@@ -28,11 +28,11 @@ public class ResistorCalc extends Activity {
     ListView listFactor;
     ListView listTolerance;
 
-    ResistorCalcBtnValue firstNumId;
-    ResistorCalcBtnValue secNumId;
-    ResistorCalcBtnValue thirdNumId;
-    ResistorCalcBtnValue factorId;
-    ResistorCalcBtnValue tolaeranceId;
+    ResistorCalcBtnValue firstNum;
+    ResistorCalcBtnValue secNum;
+    ResistorCalcBtnValue thirdNum;
+    ResistorCalcBtnValue factor;
+    ResistorCalcBtnValue tolaerance;
 
     ResistorCalcView resistorCalcView;
 
@@ -43,7 +43,11 @@ public class ResistorCalc extends Activity {
         colorsList = ColorList();
 
         resistorCalcView = findViewById(R.id.resistorCalcView);
-
+        firstNum = colorsList.get(1);
+        secNum  = colorsList.get(1);
+        thirdNum  = colorsList.get(1);
+        factor  = colorsList.get(1);
+        tolaerance  = colorsList.get(1);
 
         txtOut = (TextView) findViewById(R.id.resistorCalcValue);
         updateText();
@@ -55,7 +59,7 @@ public class ResistorCalc extends Activity {
         listFirstNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                firstNumId = CreateButtonValue().get(i);
+                firstNum = CreateButtonValue().get(i);
                 updateText();
             }
         });
@@ -65,7 +69,7 @@ public class ResistorCalc extends Activity {
         listSecNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                secNumId = CreateButtonValue().get(i);
+                secNum = CreateButtonValue().get(i);
                 updateText();
             }
         });
@@ -75,7 +79,7 @@ public class ResistorCalc extends Activity {
         listFactor.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                factorId = MultiplierList().get(i);
+                factor = MultiplierList().get(i);
                 updateText();
             }
         });
@@ -85,7 +89,7 @@ public class ResistorCalc extends Activity {
         listTolerance.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                tolaeranceId = ToleranceList().get(i);
+                tolaerance = ToleranceList().get(i);
                 updateText();
             }
         });
@@ -95,20 +99,43 @@ public class ResistorCalc extends Activity {
 
     public void updateText(){
         double value;
-        if((factorId.getValue()) >= 0)
+        if((factor.getValue()) >= 0)
         {
-            value = ((firstNumId.getValue() * 10) + (secNumId).getValue() ) * (Math.pow(10, (((factorId).getValue()) % 3)));
+            value = ((firstNum.getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (((factor).getValue()) % 3)));
         }
         else {
-            value = (((firstNumId).getValue() * 10) + (secNumId).getValue() ) * (Math.pow(10, (((factorId).getValue()))));
+            value = (((firstNum).getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (((factor).getValue()))));
+        }
+        String text = "ohm";
+        switch ((int)((factor).getValue()%3)){
+            case (1):
+            {
+                text = "k" + text;
+                break;
+            }
+            case (2):
+            {
+                text = "M" + text;
+                break;
+            }
+            case (3):
+            {
+                text = "G" + text;
+                break;
+            }
+            case (4):
+            {
+                text = "T" + text;
+                break;
+            }
         }
 
-        txtOut.setText(String.valueOf(value));
+        txtOut.setText(String.valueOf(value) + text + " +-" + String.valueOf(tolaerance.getValue()) + "%");
         resistorCalcView.setColors(
-                ContextCompat.getColor(this,(firstNumId).getColorCode()),
-                ContextCompat.getColor(this,(secNumId).getColorCode()),
-                ContextCompat.getColor(this,(factorId).getColorCode()),
-                ContextCompat.getColor(this,(tolaeranceId).getColorCode()));
+                ContextCompat.getColor(this,(firstNum).getColorCode()),
+                ContextCompat.getColor(this,(secNum).getColorCode()),
+                ContextCompat.getColor(this,(factor).getColorCode()),
+                ContextCompat.getColor(this,(tolaerance).getColorCode()));
     }
 
 
@@ -163,12 +190,12 @@ public class ResistorCalc extends Activity {
         ArrayList toleranceList = new ArrayList<>();
         toleranceList.add(new ResistorCalcBtnValue(1,1, R.color.Brown));
         toleranceList.add(new ResistorCalcBtnValue(2,2, R.color.Red));
-        toleranceList.add(new ResistorCalcBtnValue(5,5, R.color.Green));
-        toleranceList.add(new ResistorCalcBtnValue(6,6, R.color.Blue));
-        toleranceList.add(new ResistorCalcBtnValue(7,7, R.color.Violet));
-        toleranceList.add(new ResistorCalcBtnValue(8,8, R.color.Grey));
-        toleranceList.add(new ResistorCalcBtnValue(10, -1, R.color.Gold));
-        toleranceList.add(new ResistorCalcBtnValue(11, -2, R.color.Silver));
+        toleranceList.add(new ResistorCalcBtnValue(5,0.5f, R.color.Green));
+        toleranceList.add(new ResistorCalcBtnValue(6,0.25f, R.color.Blue));
+        toleranceList.add(new ResistorCalcBtnValue(7,0.10f, R.color.Violet));
+        toleranceList.add(new ResistorCalcBtnValue(8,0.5f, R.color.Grey));
+        toleranceList.add(new ResistorCalcBtnValue(10, 5, R.color.Gold));
+        toleranceList.add(new ResistorCalcBtnValue(11, 10, R.color.Silver));
         return toleranceList;
     }
 
