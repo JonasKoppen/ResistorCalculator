@@ -73,7 +73,7 @@ public class ResistorCalcView extends View {
         Bitmap picture = BitmapFactory.decodeResource(getResources(), R.drawable.resistorcalc);
         canvas.drawBitmap(picture,new Rect(0,0,picture.getWidth(), picture.getHeight()), new Rect(0,0,width,height), paint);
 
-        Rect first = new Rect((int)((float)width*0.33),(int)((float)height*0.31),(int)((float)width*0.4),(int)((float)height*0.75));
+        Rect first = new Rect((int)((float)width*0.215),(int)((float)height*0.31),(int)((float)width*0.4),(int)((float)height*0.82));
         Rect sec = new Rect((int)((float)width*0.43),(int)((float)height*0.31),(int)((float)width*0.5),(int)((float)height*0.75));
         Rect factor = new Rect((int)((float)width*0.53),(int)((float)height*0.31),(int)((float)width*0.6),(int)((float)height*0.75));
         Rect tolerance = new Rect((int)((float)width*0.73),(int)((float)height*0.31),(int)((float)width*0.8),(int)((float)height*0.75));

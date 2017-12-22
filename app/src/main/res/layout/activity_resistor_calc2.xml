@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ResistorCalc"
+    tools:context="ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.ResistorCalc"
+    android:background="#fcf3d1"
+    android:orientation="vertical">
+
+
+    <ap.appoty.viktorsegers.jonaskoppen.resistorcalculator.ResistorCalcView
+        android:id="@+id/resistorCalcView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_row="0"
+        android:layout_rowWeight="1"/>
+
+    <TextView
+        android:id="@+id/resistorCalcValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_columnSpan="4"
+        android:layout_row="1"
+        android:gravity="center"
+        android:text="Hi"
+        android:layout_rowWeight="1"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstNum"
+            android:layout_weight="1"
+            >
+
+        </ListView>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/secNum"
+            android:layout_weight="1">
+
+        </ListView>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/factor"
+            android:layout_weight="1">
+
+        </ListView>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tolerantie"
+            android:layout_weight="1">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

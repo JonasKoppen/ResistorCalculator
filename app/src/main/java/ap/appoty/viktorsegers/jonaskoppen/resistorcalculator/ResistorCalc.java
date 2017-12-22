@@ -38,7 +38,7 @@ public class ResistorCalc extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resistor_calc);
+        setContentView(R.layout.activity_resistor_calc2);
         createButtonValue();
 
         resistorCalcView = findViewById(R.id.resistorCalcView);
