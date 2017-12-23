@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.SurfaceView;
 import android.view.View;
@@ -54,6 +55,7 @@ public class ResistorCalcView extends View {
             kleuren = new ArrayList<>();
             kleuren.add(Color.RED);
             kleuren.add(Color.BLUE);
+            kleuren.add(Color.GRAY);
             kleuren.add(Color.GREEN);
             kleuren.add(Color.GRAY);
         }
@@ -73,49 +75,37 @@ public class ResistorCalcView extends View {
         Bitmap picture = BitmapFactory.decodeResource(getResources(), R.drawable.resistorcalc);
         canvas.drawBitmap(picture,new Rect(0,0,picture.getWidth(), picture.getHeight()), new Rect(0,0,width,height), paint);
 
-        Rect first = new Rect((int)((float)width*0.215),(int)((float)height*0.31),(int)((float)width*0.4),(int)((float)height*0.82));
-        Rect sec = new Rect((int)((float)width*0.43),(int)((float)height*0.31),(int)((float)width*0.5),(int)((float)height*0.75));
+        Rect first = new Rect((int)((float)width*0.215),(int)((float)height*0.31),(int)((float)width*0.28),(int)((float)height*0.82));
+        Rect sec = new Rect((int)((float)width*0.30),(int)((float)height*0.31),(int)((float)width*0.38),(int)((float)height*0.82));
+        Rect third = new Rect((int)((float)width*0.43),(int)((float)height*0.31),(int)((float)width*0.5),(int)((float)height*0.75));
         Rect factor = new Rect((int)((float)width*0.53),(int)((float)height*0.31),(int)((float)width*0.6),(int)((float)height*0.75));
         Rect tolerance = new Rect((int)((float)width*0.73),(int)((float)height*0.31),(int)((float)width*0.8),(int)((float)height*0.75));
 
         ArrayList<Rect> rectList = new ArrayList<>();
         rectList.add(first);
         rectList.add(sec);
+        rectList.add(third);
         rectList.add(factor);
         rectList.add(tolerance);
-        rectList.add(first);
 
         for(int i = 0; i < kleuren.size(); i++){
-            paint.setColor(kleuren.get(i));
-            paint.setStyle(Paint.Style.FILL);
-            canvas.drawRect(rectList.get(i), paint);
+            if(kleuren.get(i) != ContextCompat.getColor(getContext(),R.color.Empty)) {
+                paint.setColor(kleuren.get(i));
+                paint.setStyle(Paint.Style.FILL);
+                canvas.drawRect(rectList.get(i), paint);
+            }
         }
-
-        /*
-        paint.setColor(kleuren.get(1));
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(sec, paint);
-
-        paint.setColor(kleuren.get(2));
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(factor, paint);
-
-        paint.setColor(kleuren.get(3));
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(tolerance, paint);
-        */
 
         postInvalidateDelayed(500);
         invalidate();
 
-        //Paint paint = new Paint();
-        //canvas.drawCircle(10,10,5, paint);
     }
 
-    public void setColors(int first, int second, int factor, int tolerance){
+    public void setColors(int first, int second, int third, int factor, int tolerance){
         kleuren = new ArrayList<>();
         kleuren.add(first);
         kleuren.add(second);
+        kleuren.add(third);
         kleuren.add(factor);
         kleuren.add(tolerance);
     }
