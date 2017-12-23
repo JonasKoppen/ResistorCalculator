@@ -78,10 +78,20 @@ public class ResistorCalcView extends View {
         Rect factor = new Rect((int)((float)width*0.53),(int)((float)height*0.31),(int)((float)width*0.6),(int)((float)height*0.75));
         Rect tolerance = new Rect((int)((float)width*0.73),(int)((float)height*0.31),(int)((float)width*0.8),(int)((float)height*0.75));
 
-        paint.setColor(kleuren.get(0));
-        paint.setStyle(Paint.Style.FILL);
-        canvas.drawRect(first, paint);
+        ArrayList<Rect> rectList = new ArrayList<>();
+        rectList.add(first);
+        rectList.add(sec);
+        rectList.add(factor);
+        rectList.add(tolerance);
+        rectList.add(first);
 
+        for(int i = 0; i < kleuren.size(); i++){
+            paint.setColor(kleuren.get(i));
+            paint.setStyle(Paint.Style.FILL);
+            canvas.drawRect(rectList.get(i), paint);
+        }
+
+        /*
         paint.setColor(kleuren.get(1));
         paint.setStyle(Paint.Style.FILL);
         canvas.drawRect(sec, paint);
@@ -93,6 +103,7 @@ public class ResistorCalcView extends View {
         paint.setColor(kleuren.get(3));
         paint.setStyle(Paint.Style.FILL);
         canvas.drawRect(tolerance, paint);
+        */
 
         postInvalidateDelayed(500);
         invalidate();
