@@ -248,6 +248,7 @@ public class ResistorCalc extends Activity {
         });
     }
     public void setupFiveStripe() {
+        setContentView(R.layout.activity_resistor_calc3);
         colorsList = ColorList();
 
         resistorCalcView = findViewById(R.id.resistorCalcView);
@@ -257,7 +258,7 @@ public class ResistorCalc extends Activity {
         factor = colorsList.get(12);
         tolaerance = colorsList.get(13);
 
-        setContentView(R.layout.activity_resistor_calc2);
+
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, CreateButtonValue()));
         listFirstNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -274,6 +275,16 @@ public class ResistorCalc extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 secNum = CreateButtonValue().get(i);
+                updateText();
+            }
+        });
+
+        listSecNum = findViewById(R.id.thirdNum);
+        listSecNum.setAdapter(new ResistorCalcAdaptor(this, CreateButtonValue()));
+        listSecNum.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                thirdNum = CreateButtonValue().get(i);
                 updateText();
             }
         });
@@ -298,7 +309,7 @@ public class ResistorCalc extends Activity {
             }
         });
     }
-    private void setupSixStripe() {
+    private void setupSixStripe() { //Being skippid for the moment
         colorsList = ColorList();
 
         resistorCalcView = findViewById(R.id.resistorCalcView);
