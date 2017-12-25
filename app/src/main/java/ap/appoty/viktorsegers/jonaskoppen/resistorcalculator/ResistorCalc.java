@@ -58,11 +58,13 @@ public class ResistorCalc extends Activity {
         if((factor.getValue()) >= 0)
         {
             value = ((firstNum.getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (((factor).getValue()) % 3)));
+
         }
         else {
             value = (((firstNum).getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (((factor).getValue()))));
         }
-        String text = "ohm";
+        value = Math.round(value*100)/100;
+        String text = "Ω";
         switch ((int)((factor).getValue()%3)){
             case (1):
             {
