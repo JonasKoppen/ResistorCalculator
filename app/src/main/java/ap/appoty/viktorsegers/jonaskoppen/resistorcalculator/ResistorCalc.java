@@ -3,9 +3,12 @@ package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import java.util.ArrayList;
 
@@ -27,17 +30,21 @@ public class ResistorCalc extends Activity {
 
     ResistorCalcView resistorCalcView;
 
+    Spinner selBands;
+
+    int selectedView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resistor_calc);
-        txtOut = (TextView) findViewById(R.id.resistorCalcValue);
         firstNum = ColorList().get(12);
         secNum = ColorList().get(12);
         thirdNum = ColorList().get(12);
         factor = ColorList().get(12);
         tolaerance = ColorList().get(13);
 
+        selectedView = 0;
         setupThreeStripe();
         updateText();
 
@@ -151,16 +158,58 @@ public class ResistorCalc extends Activity {
         return toleranceList;
     }
 
-    public void setupThreeStripe() {
-        setContentView(R.layout.activity_resistor_calc);
-        colorsList = ColorList();
+    public void setupGeneral(){ //setup of things that can be done by 1 function instead of being double code in seperate functions
+        txtOut = findViewById(R.id.resistorCalcValue);
 
+        colorsList = ColorList();
         resistorCalcView = findViewById(R.id.resistorCalcView);
         firstNum = colorsList.get(12);
         secNum = colorsList.get(12);
         thirdNum = colorsList.get(12);
         factor = colorsList.get(12);
         tolaerance = colorsList.get(13);
+
+        selBands = (Spinner)findViewById(R.id.selBands);
+        ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(this, R.array.resistBands, android.R.layout.simple_dropdown_item_1line);
+        selBands.setAdapter(arrayAdapter);
+        selBands.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("hi", i + "ji");
+                if(i != selectedView){
+                    selectedView = i;
+                    switch (i){
+                        case (1):
+                        {
+                            setupThreeStripe();
+                            break;
+                        }
+                        case (2):
+                        {
+                            setupFourStripe();
+                            break;
+                        }
+                        case (3):
+                        {
+                            setupFiveStripe();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+    }
+
+    public void setupThreeStripe() {
+        setContentView(R.layout.activity_resistor_calc);
+
+        setupGeneral();
+
 
 
         listFirstNum = findViewById(R.id.firstNum);
@@ -197,15 +246,8 @@ public class ResistorCalc extends Activity {
 
     public void setupFourStripe() {
         setContentView(R.layout.activity_resistor_calc2);
-        colorsList = ColorList();
 
-        resistorCalcView = findViewById(R.id.resistorCalcView);
-        firstNum = colorsList.get(12);
-        secNum = colorsList.get(12);
-        thirdNum = colorsList.get(12);
-        factor = colorsList.get(12);
-        tolaerance = colorsList.get(13);
-
+        setupGeneral();
 
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, CreateButtonValue()));
@@ -249,15 +291,8 @@ public class ResistorCalc extends Activity {
     }
     public void setupFiveStripe() {
         setContentView(R.layout.activity_resistor_calc3);
-        colorsList = ColorList();
 
-        resistorCalcView = findViewById(R.id.resistorCalcView);
-        firstNum = colorsList.get(12);
-        secNum = colorsList.get(12);
-        thirdNum = colorsList.get(12);
-        factor = colorsList.get(12);
-        tolaerance = colorsList.get(13);
-
+        setupGeneral();
 
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, CreateButtonValue()));
@@ -309,7 +344,10 @@ public class ResistorCalc extends Activity {
             }
         });
     }
+
+    /*
     private void setupSixStripe() { //Being skippid for the moment
+        txtOut = findViewById(R.id.resistorCalcValue);
         colorsList = ColorList();
 
         resistorCalcView = findViewById(R.id.resistorCalcView);
@@ -360,7 +398,7 @@ public class ResistorCalc extends Activity {
             }
         });
     }
-
+*/
 
 }
 

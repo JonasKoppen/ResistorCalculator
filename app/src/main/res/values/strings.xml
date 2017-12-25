@@ -24,4 +24,10 @@
         <item>MV</item>
         <item>GV</item>
     </string-array>
+    <string-array name="resistBands">
+        <item> </item>
+        <item>3 banden</item>
+        <item>4 banden</item>
+        <item>5 banden</item>
+    </string-array>
 </resources>

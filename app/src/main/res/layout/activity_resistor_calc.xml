@@ -14,15 +14,6 @@
         android:layout_height="50dp"
         android:background="@color/colorPrimaryDark"
         >
-
-        <ImageView
-            android:layout_width="5dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left|center"
-            android:layout_weight="1"
-            android:src="@drawable/ic_arrow_back_black_24dp"
-            />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,12 +25,13 @@
             android:textStyle="bold" />
 
         <Spinner
+            android:id="@+id/selBands"
             android:layout_width="2dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_gravity="right|center"
-            android:background="@drawable/ic_more_vert_black_24dp" />
-
+            android:background="@drawable/ic_more_vert_black_24dp"
+            />
 
     </LinearLayout>
 
