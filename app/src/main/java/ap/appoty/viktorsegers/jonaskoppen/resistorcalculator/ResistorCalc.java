@@ -33,6 +33,7 @@ public class ResistorCalc extends Activity {
     Spinner selBands;
 
     int selectedView;
+    int activeView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class ResistorCalc extends Activity {
         setupFourStripe();
         updateText();
 
-
     }
 
 
@@ -57,15 +57,15 @@ public class ResistorCalc extends Activity {
         double value;
         if((factor.getValue()) >= 0)
         {
-            value = ((firstNum.getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (((factor).getValue()) % 3)));
+            value = ((firstNum.getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (factor).getValue() %3));
 
         }
         else {
-            value = (((firstNum).getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (((factor).getValue()))));
+            value = (((firstNum).getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (factor).getValue()));
         }
-        value = Math.round(value*100)/100;
+        value = Math.round(value*100f)/100f;
         String text = "Ω";
-        switch ((int)((factor).getValue()%3)){
+        switch ((int)((factor).getValue()/3)){
             case (1):
             {
                 text = "k" + text;
@@ -88,13 +88,24 @@ public class ResistorCalc extends Activity {
             }
         }
 
-        txtOut.setText(String.valueOf(value) + text + " +-" + String.valueOf(tolaerance.getValue()) + "%");
-        resistorCalcView.setColors(
-                ContextCompat.getColor(this,(firstNum).getColorCode()),
-                ContextCompat.getColor(this,(secNum).getColorCode()),
-                ContextCompat.getColor(this,(thirdNum).getColorCode()),
-                ContextCompat.getColor(this,(factor).getColorCode()),
-                ContextCompat.getColor(this,(tolaerance).getColorCode()));
+        txtOut.setText(String.format("%.2f",value) + text + " ±" + String.valueOf(tolaerance.getValue()) + "%" + selectedView);
+        if(activeView <= 4){
+            resistorCalcView.setColors(
+                    ContextCompat.getColor(this, R.color.Empty),
+                    ContextCompat.getColor(this,(firstNum).getColorCode()),
+                    ContextCompat.getColor(this,(secNum).getColorCode()),
+                    ContextCompat.getColor(this,(factor).getColorCode()),
+                    ContextCompat.getColor(this,(tolaerance).getColorCode()));
+        }
+        else {
+            resistorCalcView.setColors(
+                    ContextCompat.getColor(this,(firstNum).getColorCode()),
+                    ContextCompat.getColor(this,(secNum).getColorCode()),
+                    ContextCompat.getColor(this,(thirdNum).getColorCode()),
+                    ContextCompat.getColor(this,(factor).getColorCode()),
+                    ContextCompat.getColor(this,(tolaerance).getColorCode()));
+        }
+
     }
 
 
@@ -211,7 +222,7 @@ public class ResistorCalc extends Activity {
         setContentView(R.layout.activity_resistor_calc);
 
         setupGeneral();
-
+        activeView = 3;
 
 
         listFirstNum = findViewById(R.id.firstNum);
@@ -250,6 +261,7 @@ public class ResistorCalc extends Activity {
         setContentView(R.layout.activity_resistor_calc2);
 
         setupGeneral();
+        activeView = 4;
 
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, CreateButtonValue()));
@@ -295,6 +307,7 @@ public class ResistorCalc extends Activity {
         setContentView(R.layout.activity_resistor_calc3);
 
         setupGeneral();
+        activeView = 5;
 
         listFirstNum = findViewById(R.id.firstNum);
         listFirstNum.setAdapter(new ResistorCalcAdaptor(this, CreateButtonValue()));
