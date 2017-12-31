@@ -91,6 +91,7 @@ public class ResistorCalcView extends View {
         for(int i = 0; i < kleuren.size(); i++){
             if(kleuren.get(i) != ContextCompat.getColor(getContext(),R.color.Empty)) {
                 paint.setColor(kleuren.get(i));
+                paint.setAlpha(110);
                 paint.setStyle(Paint.Style.FILL);
                 canvas.drawRect(rectList.get(i), paint);
             }

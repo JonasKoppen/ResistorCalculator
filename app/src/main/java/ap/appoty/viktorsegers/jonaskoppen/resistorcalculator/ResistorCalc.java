@@ -45,7 +45,7 @@ public class ResistorCalc extends Activity {
         tolaerance = ColorList().get(13);
 
         selectedView = 0;
-        setupThreeStripe();
+        setupFourStripe();
         updateText();
 
 
