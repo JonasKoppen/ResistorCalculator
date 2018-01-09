@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Viktor on 20-12-2017.
@@ -60,16 +61,19 @@ public class OhmLaw extends AppCompatActivity {
                 if (checkedId == R.id.radioButtonI) {
                     spinnerWaarde1.setAdapter(arrayAdapterOhm);
                     spinnerWaarde2.setAdapter(arrayAdapterVoltage);
-
+                    spinnerWaarde2.setSelection(3);
 
                 } else if (checkedId == R.id.radioButtonV) {
                     spinnerWaarde1.setAdapter(arrayAdapterOhm);
                     spinnerWaarde2.setAdapter(arrayAdapterCurrent);
+                    spinnerWaarde2.setSelection(3);
 
 
                 } else {
                     spinnerWaarde1.setAdapter(arrayAdapterCurrent);
                     spinnerWaarde2.setAdapter(arrayAdapterVoltage);
+                    spinnerWaarde1.setSelection(3);
+                    spinnerWaarde2.setSelection(3);
 
                 }
             }
@@ -78,6 +82,7 @@ public class OhmLaw extends AppCompatActivity {
         StartCalculate.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View view) {
+                try {
                 String stringX = Waarde1.getText().toString();
                 String stringY = Waarde2.getText().toString();
                 double WaardeX = Double.parseDouble(stringX);
@@ -87,44 +92,50 @@ public class OhmLaw extends AppCompatActivity {
                 String prefix;
                 double Rtotal;
                 double result = 0;
-                //weerstand
-                if (spinnerWaarde1.getAdapter() == arrayAdapterCurrent && spinnerWaarde2.getAdapter() == arrayAdapterVoltage) {
-                    result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) / (WaardeX * SpinnerWaarde(spinnerWaarde1));
-                    Rtotal = Math.round((result) * 1000d) / 1000d;
-                    prefix = calculator.getPrefix(((SpinnerWaarde(spinnerWaarde1)*SpinnerWaarde(spinnerWaarde2))/(SpinnerWaarde(spinnerWaarde1)+SpinnerWaarde(spinnerWaarde2))));
 
-                    WaardeI.setText(stringX + calculator.getPrefix(SpinnerWaarde(spinnerWaarde1)) + "A");
-                    WaardeR.setText(Double.toString(Rtotal) + prefix + "Ω");
-                    WaardeV.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "V");
+                    //weerstand
+                    if (spinnerWaarde1.getAdapter() == arrayAdapterCurrent && spinnerWaarde2.getAdapter() == arrayAdapterVoltage) {
+                        result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) / (WaardeX * SpinnerWaarde(spinnerWaarde1));
+                        Rtotal = Math.round((result) * 1000d) / 1000d;
+                        prefix = calculator.getPrefix(((SpinnerWaarde(spinnerWaarde1) * SpinnerWaarde(spinnerWaarde2)) / (SpinnerWaarde(spinnerWaarde1) + SpinnerWaarde(spinnerWaarde2))));
+
+                        WaardeI.setText(stringX + calculator.getPrefix(SpinnerWaarde(spinnerWaarde1)) + "A");
+                        WaardeR.setText(Double.toString(Rtotal) + prefix + "Ω");
+                        WaardeV.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "V");
+
+                    }
+
+                    //Voltage
+                    else if (spinnerWaarde1.getAdapter() == arrayAdapterOhm && spinnerWaarde2.getAdapter() == arrayAdapterCurrent) {
+                        result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) * (WaardeX * SpinnerWaardeOhm(spinnerWaarde1));
+                        Rtotal = Math.round((result) * 1000d) / 1000d;
+                        prefix = calculator.getPrefix(((SpinnerWaardeOhm(spinnerWaarde1) * SpinnerWaarde(spinnerWaarde2)) / (SpinnerWaardeOhm(spinnerWaarde1) + SpinnerWaarde(spinnerWaarde2))));
+
+                        WaardeI.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "A");
+                        WaardeV.setText(Double.toString(Rtotal) + prefix + "V");
+                        WaardeR.setText(stringX + calculator.getPrefix(SpinnerWaardeOhm(spinnerWaarde1)) + "Ω");
+
+
+                    }
+                    //Current
+                    else {
+                        result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) / (WaardeX * SpinnerWaardeOhm(spinnerWaarde1));
+                        Rtotal = Math.round((result) * 1000d) / 1000d;
+                        prefix = calculator.getPrefix(((SpinnerWaardeOhm(spinnerWaarde1) * SpinnerWaarde(spinnerWaarde2)) / (SpinnerWaardeOhm(spinnerWaarde1) + SpinnerWaarde(spinnerWaarde2))));
+                        Log.e("test", Double.toString(result));
+                        Log.e("test", Double.toString(Rtotal));
+
+                        WaardeI.setText(Double.toString(Rtotal) + prefix + "A");
+                        WaardeR.setText(stringX + calculator.getPrefix(SpinnerWaardeOhm(spinnerWaarde1)) + "Ω");
+                        WaardeV.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "V");
+
+                    }
+                }
+                 catch (NumberFormatException e){
+                        Toast.makeText((getApplicationContext()), "give a valid value", Toast.LENGTH_LONG).show();
+                    }
 
                 }
-
-                //Voltage
-                else if (spinnerWaarde1.getAdapter() == arrayAdapterOhm && spinnerWaarde2.getAdapter() == arrayAdapterCurrent) {
-                    result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) * (WaardeX * SpinnerWaardeOhm(spinnerWaarde1));
-                    Rtotal = Math.round((result) * 1000d) / 1000d;
-                    prefix = calculator.getPrefix(((SpinnerWaardeOhm(spinnerWaarde1)*SpinnerWaarde(spinnerWaarde2))/(SpinnerWaardeOhm(spinnerWaarde1)+SpinnerWaarde(spinnerWaarde2))));
-
-                    WaardeI.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "A");
-                    WaardeV.setText(Double.toString(Rtotal) + prefix + "V");
-                    WaardeR.setText(stringX + calculator.getPrefix(SpinnerWaardeOhm(spinnerWaarde1)) + "Ω");
-
-
-                }
-                //Current
-                else {
-                    result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) / (WaardeX * SpinnerWaardeOhm(spinnerWaarde1));
-                    Rtotal = Math.round((result) * 1000d) / 1000d;
-                    prefix = calculator.getPrefix(((SpinnerWaardeOhm(spinnerWaarde1)*SpinnerWaarde(spinnerWaarde2))/(SpinnerWaardeOhm(spinnerWaarde1)+SpinnerWaarde(spinnerWaarde2))));
-                    Log.e("test", Double.toString(result));
-                    Log.e("test", Double.toString(Rtotal));
-
-                    WaardeI.setText(Double.toString(Rtotal) + prefix + "A");
-                    WaardeR.setText(stringX + calculator.getPrefix(SpinnerWaardeOhm(spinnerWaarde1)) + "Ω");
-                    WaardeV.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "V");
-
-                }
-            }
         });
 
 
@@ -191,10 +202,5 @@ public class OhmLaw extends AppCompatActivity {
         return multiplier;
     }
 }
-
-
-
-
-
 
 
