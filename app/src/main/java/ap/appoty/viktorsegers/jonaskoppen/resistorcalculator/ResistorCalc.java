@@ -55,40 +55,59 @@ public class ResistorCalc extends Activity {
 
     public void updateText(){
         double value;
+        String text;
+        int factorValue = (int) (factor.getValue() % 3);
+
         if((factor.getValue()) >= 0)
         {
-            value = ((firstNum.getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (factor).getValue() %3));
+            value = ((firstNum.getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, factorValue));
 
         }
         else {
             value = (((firstNum).getValue() * 10) + (secNum).getValue() ) * (Math.pow(10, (factor).getValue()));
         }
-        value = Math.round(value*100f)/100f;
-        String text = "Ω";
-        switch ((int)((factor).getValue()/3)){
+
+
+        if(Math.round(value/(Math.pow(10, ((int)((factor).getValue()/3))))) > 0){
+            value = value / (Math.pow(10, ((int)((factor).getValue()/3))));
+        }
+        Log.i("ss", "k" + (value));
+
+        if((value%1)  != 0){
+            value = Math.round(value*100f)/100f;
+            text = String.format("%.2f",value);
+        }
+        else {
+            value =  Math.round(value);
+            text = String.format("%.0f",value);
+        }
+
+
+        switch ((int)factor.getValue() / 3){
             case (1):
             {
-                text = "k" + text;
+                text += "k";
                 break;
             }
             case (2):
             {
-                text = "M" + text;
+                text += "M";
                 break;
             }
             case (3):
             {
-                text = "G" + text;
+                text += "G";
                 break;
             }
             case (4):
             {
-                text = "T" + text;
+                text += "T";
                 break;
             }
         }
+        text += "Ω";
 
-        txtOut.setText(String.format("%.2f",value) + text + " ±" + String.valueOf(tolaerance.getValue()) + "%");
+        txtOut.setText( text + " ±" + String.valueOf(tolaerance.getValue()) + "%");
         resistorCalcView.setColors(
                 ContextCompat.getColor(this,(firstNum).getColorCode()),
                 ContextCompat.getColor(this,(secNum).getColorCode()),

@@ -2,6 +2,7 @@ package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -43,6 +44,7 @@ public class resistor_serie extends AppCompatActivity {
         R2Spinner.setAdapter(arrayAdapter);
 
         calculator = new PrefixCalculator();
+
     }
 
     public void bereken(View v){
@@ -83,9 +85,10 @@ public class resistor_serie extends AppCompatActivity {
             String R2string = R2Text.getText().toString();
             double R1 = Double.parseDouble(R1string) * R1multiplier;
             double R2 = Double.parseDouble(R2string) * R2multiplier;
-            double Rtotal = Math.round(calculator.getWaarde((R1 + R2))*1000000d)*1000000d;
+
+            double Rtotal = Math.round(calculator.getWaarde((R1 + R2)) * 1000000d) / 1000000d;
             String prefix = calculator.getPrefix((R1 + R2));
-            totalText.setText(String.valueOf(Rtotal) + prefix + "Ω");
+            totalText.setText(Rtotal + prefix + "Ω");
         }
         catch (NumberFormatException e){
             Toast.makeText(this, "give a valid value", Toast.LENGTH_LONG).show();

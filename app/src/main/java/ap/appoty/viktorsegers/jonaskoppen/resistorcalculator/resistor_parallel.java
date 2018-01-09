@@ -78,10 +78,11 @@ public class resistor_parallel extends AppCompatActivity {
                 R2multiplier = Math.pow(10,9);
                 break;
         }
-        String R1string = R1Text.getText().toString();
-        String R2string = R2Text.getText().toString();
+
 
         try{
+            String R1string = R1Text.getText().toString();
+            String R2string = R2Text.getText().toString();
             double R1 = Double.parseDouble(R1string) * R1multiplier;
             double R2 = Double.parseDouble(R2string) * R2multiplier;
 
