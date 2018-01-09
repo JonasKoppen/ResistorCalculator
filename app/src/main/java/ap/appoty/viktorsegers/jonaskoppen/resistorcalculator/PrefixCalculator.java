@@ -6,7 +6,7 @@ package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
 public class PrefixCalculator{
 
-    public Double getWaarde (Double getal){
+    static public Double getWaarde (Double getal){
         if(getal < Math.pow(10,-6)){
             return (getal/Math.pow(10,-9));
         }
@@ -30,7 +30,7 @@ public class PrefixCalculator{
         }
     }
 
-    public String getPrefix (Double getal){
+    static public String getPrefix (Double getal){
         if(getal < Math.pow(10,-6)){
             return  "n";
         }
