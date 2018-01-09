@@ -88,23 +88,14 @@ public class ResistorCalc extends Activity {
             }
         }
 
-        txtOut.setText(String.format("%.2f",value) + text + " ±" + String.valueOf(tolaerance.getValue()) + "%" + selectedView);
-        if(activeView <= 4){
-            resistorCalcView.setColors(
-                    ContextCompat.getColor(this, R.color.Empty),
-                    ContextCompat.getColor(this,(firstNum).getColorCode()),
-                    ContextCompat.getColor(this,(secNum).getColorCode()),
-                    ContextCompat.getColor(this,(factor).getColorCode()),
-                    ContextCompat.getColor(this,(tolaerance).getColorCode()));
-        }
-        else {
-            resistorCalcView.setColors(
-                    ContextCompat.getColor(this,(firstNum).getColorCode()),
-                    ContextCompat.getColor(this,(secNum).getColorCode()),
-                    ContextCompat.getColor(this,(thirdNum).getColorCode()),
-                    ContextCompat.getColor(this,(factor).getColorCode()),
-                    ContextCompat.getColor(this,(tolaerance).getColorCode()));
-        }
+        txtOut.setText(String.format("%.2f",value) + text + " ±" + String.valueOf(tolaerance.getValue()) + "%");
+        resistorCalcView.setColors(
+                ContextCompat.getColor(this,(firstNum).getColorCode()),
+                ContextCompat.getColor(this,(secNum).getColorCode()),
+                ContextCompat.getColor(this,(thirdNum).getColorCode()),
+                ContextCompat.getColor(this,(factor).getColorCode()),
+                ContextCompat.getColor(this,(tolaerance).getColorCode()));
+
 
     }
 
@@ -181,6 +172,8 @@ public class ResistorCalc extends Activity {
         thirdNum = colorsList.get(12);
         factor = colorsList.get(12);
         tolaerance = colorsList.get(13);
+
+        resistorCalcView.resetColors();
 
         selBands = (Spinner)findViewById(R.id.selBands);
         ArrayAdapter arrayAdapter = ArrayAdapter.createFromResource(this, R.array.resistBands, android.R.layout.simple_dropdown_item_1line);

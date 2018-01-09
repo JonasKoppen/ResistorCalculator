@@ -52,12 +52,7 @@ public class ResistorCalcView extends View {
         paint = new Paint();
         isInit = true;
         if(kleuren == null) {
-            kleuren = new ArrayList<>();
-            kleuren.add(Color.RED);
-            kleuren.add(Color.BLUE);
-            kleuren.add(Color.GRAY);
-            kleuren.add(Color.GREEN);
-            kleuren.add(Color.GRAY);
+            resetColors();
         }
     }
     @Override
@@ -76,9 +71,9 @@ public class ResistorCalcView extends View {
         canvas.drawBitmap(picture,new Rect(0,0,picture.getWidth(), picture.getHeight()), new Rect(0,0,width,height), paint);
 
         Rect first = new Rect((int)((float)width*0.247),(int)((float)height*0.1666),(int)((float)width*0.2911),(int)((float)height*0.83333));
-        Rect sec = new Rect((int)((float)width*0.38),(int)((float)height*0.3111),(int)((float)width*0.43),(int)((float)height*0.688888));
-        Rect third = new Rect((int)((float)width*0.48),(int)((float)height*0.3111),(int)((float)width*0.53),(int)((float)height*0.688888));
-        Rect factor = new Rect((int)((float)width*0.58),(int)((float)height*0.3111),(int)((float)width*0.63),(int)((float)height*0.688888));
+        Rect sec = new Rect((int)((float)width*0.37),(int)((float)height*0.3111),(int)((float)width*0.42),(int)((float)height*0.688888));
+        Rect third = new Rect((int)((float)width*0.44),(int)((float)height*0.3111),(int)((float)width*0.49),(int)((float)height*0.688888));
+        Rect factor = new Rect((int)((float)width*0.51),(int)((float)height*0.3111),(int)((float)width*0.56),(int)((float)height*0.688888));
         Rect tolerance = new Rect((int)((float)width*0.73),(int)((float)height*0.16666),(int)((float)width*0.785),(int)((float)height*0.8333));
 
         Rect test = new Rect(1,2,3,4);
@@ -110,6 +105,17 @@ public class ResistorCalcView extends View {
         kleuren.add(third);
         kleuren.add(factor);
         kleuren.add(tolerance);
+    }
+
+    public void resetColors()
+    {
+        int emptyColor = ContextCompat.getColor(getContext(),R.color.Empty);
+        kleuren = new ArrayList<>();
+        kleuren.add(emptyColor);
+        kleuren.add(emptyColor);
+        kleuren.add(emptyColor);
+        kleuren.add(emptyColor);
+        kleuren.add(emptyColor);
     }
 
 

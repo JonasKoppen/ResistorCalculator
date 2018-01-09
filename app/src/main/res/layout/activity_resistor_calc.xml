@@ -19,8 +19,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="4"
-            android:gravity="center"
+            android:gravity="left"
             android:text="KleurCode"
+            android:textColor="@color/White"
             android:textSize="18sp"
             android:textStyle="bold" />
 
