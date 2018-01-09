@@ -2,6 +2,7 @@ package ap.appoty.viktorsegers.jonaskoppen.resistorcalculator;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -82,31 +83,45 @@ public class OhmLaw extends AppCompatActivity {
                 double WaardeX = Double.parseDouble(stringX);
                 double WaardeY = Double.parseDouble(stringY);
 
-
+                PrefixCalculator calculator = new PrefixCalculator();
+                String prefix;
+                double Rtotal;
                 double result = 0;
                 //weerstand
                 if (spinnerWaarde1.getAdapter() == arrayAdapterCurrent && spinnerWaarde2.getAdapter() == arrayAdapterVoltage) {
                     result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) / (WaardeX * SpinnerWaarde(spinnerWaarde1));
-                    WaardeI.setText(stringX);
-                    WaardeR.setText(Double.toString(result));
-                    WaardeV.setText(stringY);
+                    Rtotal = Math.round((result) * 1000d) / 1000d;
+                    prefix = calculator.getPrefix(((SpinnerWaarde(spinnerWaarde1)*SpinnerWaarde(spinnerWaarde2))/(SpinnerWaarde(spinnerWaarde1)+SpinnerWaarde(spinnerWaarde2))));
+
+                    WaardeI.setText(stringX + calculator.getPrefix(SpinnerWaarde(spinnerWaarde1)) + "A");
+                    WaardeR.setText(Double.toString(Rtotal) + prefix + "Ω");
+                    WaardeV.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "V");
+
                 }
 
                 //Voltage
                 else if (spinnerWaarde1.getAdapter() == arrayAdapterOhm && spinnerWaarde2.getAdapter() == arrayAdapterCurrent) {
                     result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) * (WaardeX * SpinnerWaardeOhm(spinnerWaarde1));
-                    WaardeI.setText(stringY);
-                    WaardeV.setText(Double.toString(result));
-                    WaardeV.setText(stringX);
+                    Rtotal = Math.round((result) * 1000d) / 1000d;
+                    prefix = calculator.getPrefix(((SpinnerWaardeOhm(spinnerWaarde1)*SpinnerWaarde(spinnerWaarde2))/(SpinnerWaardeOhm(spinnerWaarde1)+SpinnerWaarde(spinnerWaarde2))));
+
+                    WaardeI.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "A");
+                    WaardeV.setText(Double.toString(Rtotal) + prefix + "V");
+                    WaardeR.setText(stringX + calculator.getPrefix(SpinnerWaardeOhm(spinnerWaarde1)) + "Ω");
 
 
                 }
                 //Current
                 else {
-                    result = (WaardeY * SpinnerWaardeOhm(spinnerWaarde2)) / (WaardeX * SpinnerWaarde(spinnerWaarde1));
-                    WaardeI.setText(Double.toString(result));
-                    WaardeR.setText(stringX);
-                    WaardeV.setText(stringY);
+                    result = (WaardeY * SpinnerWaarde(spinnerWaarde2)) / (WaardeX * SpinnerWaardeOhm(spinnerWaarde1));
+                    Rtotal = Math.round((result) * 1000d) / 1000d;
+                    prefix = calculator.getPrefix(((SpinnerWaardeOhm(spinnerWaarde1)*SpinnerWaarde(spinnerWaarde2))/(SpinnerWaardeOhm(spinnerWaarde1)+SpinnerWaarde(spinnerWaarde2))));
+                    Log.e("test", Double.toString(result));
+                    Log.e("test", Double.toString(Rtotal));
+
+                    WaardeI.setText(Double.toString(Rtotal) + prefix + "A");
+                    WaardeR.setText(stringX + calculator.getPrefix(SpinnerWaardeOhm(spinnerWaarde1)) + "Ω");
+                    WaardeV.setText(stringY + calculator.getPrefix(SpinnerWaarde(spinnerWaarde2)) + "V");
 
                 }
             }
