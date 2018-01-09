@@ -68,9 +68,10 @@ public class ResistorCalc extends Activity {
         }
 
 
-        if(Math.round(value/(Math.pow(10, ((int)((factor).getValue()/3))))) > 0){
-            value = value / (Math.pow(10, ((int)((factor).getValue()/3))));
+        if(Math.round(value/(Math.pow(10, ((int)(((factor).getValue()+1)/3)*3)))) > 0){
+            value = value / (Math.pow(10, ((int)((factor).getValue()/3)*3)));
         }
+
         Log.i("ss", "k" + (value));
 
         if((value%1)  != 0){
