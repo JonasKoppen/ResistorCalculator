@@ -86,7 +86,7 @@ public class resistor_serie extends AppCompatActivity {
             double R1 = Double.parseDouble(R1string) * R1multiplier;
             double R2 = Double.parseDouble(R2string) * R2multiplier;
 
-            double Rtotal = Math.round(calculator.getWaarde((R1 + R2)) * 10000d) / 10000d;
+            double Rtotal = Math.round(calculator.getWaarde((R1 + R2)) * 10000d) / 100000d;
             String prefix = calculator.getPrefix((R1 + R2));
             totalText.setText(Rtotal + prefix + "Ω");
         }
