@@ -48,10 +48,7 @@ public class ResistorCalc extends Activity {
         selectedView = 0;
         setupFourStripe();
         updateText();
-
     }
-
-
 
     public void updateText(){
         double value;
@@ -80,11 +77,9 @@ public class ResistorCalc extends Activity {
         value = PrefixCalculator.getWaarde(value);
 
         if((value%1)  != 0){ //Deze if laat enkel een komma getal tonen als er een is
-            value = Math.round(value*100f)/100f;
             text = String.format("%.2f",value) + text;
         }
         else {
-            value =  Math.round(value);
             text = String.format("%.0f",value) + text;
         }
 
@@ -243,7 +238,6 @@ public class ResistorCalc extends Activity {
                 updateText();
             }
         });
-
     }
 
     public void setupFourStripe() {
